@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crowd Alert System</title>
+    <!-- Add Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Minimal CSS for interactivity -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #f0f2f5, #d9e2ec);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            transition: color 0.3s;
+        }
+
+        h1:hover {
+            color: #007bff;
+        }
+
+        form {
+            background: #fff;
+            padding: 25px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        form:hover {
+            transform: translateY(-5px);
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="file"]:hover {
+            border-color: #007bff;
+            box-shadow: 0 0 5px #007bff;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Add animation for file selection */
+        input[type="file"]::file-selector-button {
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 1px solid #007bff;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Crowd Movement Prediction & Stampede Alert</h1>
+        <form action="/analyze" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" required>
+            <br>
+            <button type="submit">Analyze Crowd</button>
+        </form>
+    </div>
+
+    <!-- Optional: subtle JS for alerting user if file is selected -->
+    <script>
+        const fileInput = document.querySelector('input[name="image"]');
+        fileInput.addEventListener('change', () => {
+            if(fileInput.files.length > 0){
+                fileInput.style.borderColor = '#28a745';
+            }
+        });
+    </script>
+</body>
+</html>
